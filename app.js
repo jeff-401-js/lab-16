@@ -3,6 +3,7 @@
 const fs = require('fs');
 const event = require('./events/event.js');
 require('./events/logger.js');
+require('./events/error.js');
 
 const alterFile = (file) => {
   readFile(file)
@@ -14,7 +15,9 @@ const alterFile = (file) => {
 function readFile(file){
   return new Promise((resolve, reject) => {
     fs.readFile(file, (err, data) => {
-      if(err) { reject(err); }
+      if(err) { 
+        event.emit('error', 'readfile error', `${err}`);
+      }
       event.emit('log', 'readfile', `${file} read`);
       resolve(data.toString());
 
@@ -30,7 +33,9 @@ function upper(data){
 function writeFile(file, text){
   return new Promise((resolve, reject) => {
     fs.writeFile(file, Buffer.from(text), (err, data) => {
-      if(err) { reject(err); }
+      if(err) { 
+        event.emit('error', 'writefile error', `${err}`); 
+      }
       event.emit('log', 'writefile', `${file} saved`);
     });
   });
