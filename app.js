@@ -1,9 +1,20 @@
 'use strict';
 
+/**
+ * app module
+ * @module app
+ */
+
 const fs = require('fs');
 const event = require('./events/event.js');
 require('./events/logger.js');
 require('./events/error.js');
+
+/**
+ * alterFile
+   * @param {object} file - file to be altered
+   * @desc alterFile function
+   */
 
 const alterFile = (file) => {
   readFile(file)
@@ -11,6 +22,12 @@ const alterFile = (file) => {
       writeFile(file, upper(data));
     });
 };
+
+/**
+ * readFile
+   * @param {object} file - file to be read
+   * @desc readFile function
+   */
 
 function readFile(file){
   return new Promise((resolve, reject) => {
@@ -25,10 +42,22 @@ function readFile(file){
   });
 }
 
+/**
+ * uppercase
+   * @param {object} data - data to be uppercased
+   * @desc uppercase function
+   */
 function upper(data){
   event.emit('log', 'uppercase', `${data} uppercased`);
   return data.toUpperCase();
 }
+
+/**
+ * writeFile
+   * @param {object} file - file be written
+   * @param {object} text - to be transformed
+   * @desc writeFile function
+   */
 
 function writeFile(file, text){
   return new Promise((resolve, reject) => {
@@ -44,4 +73,4 @@ function writeFile(file, text){
 let file = process.argv.slice(2).shift();
 alterFile(file);
 
-module.exports = readFile, writeFile, upper;
+// module.exports = readFile, writeFile, upper;
