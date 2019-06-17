@@ -13,5 +13,15 @@ const alterFile = (file) => {
   });
 };
 
+function readFile(file){
+  return new Promise((resolve, reject) => {
+    fs.readFile(file, (err, data) => {
+      if(err) { reject(err); }
+      resolve(data.toString().toUpperCase());
+
+    });
+  });
+}
+
 let file = process.argv.slice(2).shift();
 alterFile(file);
