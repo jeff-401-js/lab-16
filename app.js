@@ -1,6 +1,8 @@
 'use strict';
 
 const fs = require('fs');
+const event = require('./events/event.js');
+require('./events/logger.js');
 
 const alterFile = (file) => {
   readFile(file)
@@ -27,7 +29,7 @@ function writeFile(file, text){
   return new Promise((resolve, reject) => {
     fs.writeFile(file, Buffer.from(text), (err, data) => {
       if(err) { reject(err); }
-      console.log(`${file} saved`);
+      event.emit('log', 'writefile', `${file} saved`);
     });
   });
 }
