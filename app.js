@@ -15,6 +15,7 @@ function readFile(file){
   return new Promise((resolve, reject) => {
     fs.readFile(file, (err, data) => {
       if(err) { reject(err); }
+      event.emit('log', 'readfile', `${file} read`);
       resolve(data.toString());
 
     });
@@ -22,6 +23,7 @@ function readFile(file){
 }
 
 function upper(data){
+  event.emit('log', 'uppercase', `${data} uppercased`);
   return data.toUpperCase();
 }
 
