@@ -1,15 +1,25 @@
 'use strict';
 
+/**
+ * events module
+ * @module __tests__/app.test
+ */
+
 const event = require('../events/event.js');
 // const app = require('../app.js');
 
 require('../events/logger.js');
 require('../events/error.js');
-const mocks = require('./__mocks__/fs.js');
-jest.mock('./__mocks__/fs');
+const mocks = require('../__mocks__/fs.js');
+jest.mock('../__mocks__/fs');
 let readFile = mocks.readFile;
 // console.log(readFile);
 let writeFile = mocks.writeFile;
+
+/**
+ * log test
+   * @desc logger test function
+   */
 
 describe('logger', () => {
   it('logs the payload on save', () => {
@@ -20,6 +30,11 @@ describe('logger', () => {
   });
 });
 
+/**
+ * error test
+   * @desc error test function
+   */
+
 describe('error', () => {
   it('logs an error', () => {
     let spy = jest.spyOn(console, 'log');
@@ -28,6 +43,11 @@ describe('error', () => {
     spy.mockRestore();
   });
 });
+
+/**
+ * readfile test
+   * @desc readfile test function
+   */
 
 describe('readfile Module', () => {
 
@@ -39,6 +59,11 @@ describe('readfile Module', () => {
     });
   });
 });
+
+/**
+ * writefile test
+   * @desc writefile test function
+   */
 
 describe('writefile Module', () => {
 
