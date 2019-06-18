@@ -10,7 +10,7 @@ Jeff
 
 #### Documentation
 * [UML-Data-Flow](https://photos.app.goo.gl/qS4WhuxrZUfwxbCD8)
-* [JSDOCS](./docs/index.html)
+* [JSDOCS](./docs/index.html) - drop index.html in chrome
 
 ### Setup
 eslint
