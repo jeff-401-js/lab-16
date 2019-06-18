@@ -10,6 +10,7 @@ Jeff
 
 #### Documentation
 * [UML-Data-Flow](https://photos.app.goo.gl/qS4WhuxrZUfwxbCD8)
+* [JSDOCS](./docs/index.html)
 
 ### Setup
 eslint
